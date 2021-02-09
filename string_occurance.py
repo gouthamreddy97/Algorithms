@@ -1,32 +1,18 @@
 #abbcccdeeeffg
 
 def str_occurance(string):
-
-	ans = []
+	
+	data = {}
+	count = 1
 
 	for i in range(len(string)):
-
-		if string[i] == string[-1]:
-			s = (string[i],string.count(string[i]))
-			ans.append(s)
-			continue
-
-		if string[i] == string[i+1]:
-			i += 1
+		if(i+1 == len(string)):
+			data[string[i]] = count
+		elif(string[i] == string[i+1]):
+			count += 1
 		else:
-			s = (string[i],string.count(string[i]))
-			ans.append(s)
-
-	dk = []
-	dv = []
-
-	for (k,v) in ans:
-		dk.append(k)
-		dv.append(v)
-
-	dzip = zip(dk,dv)
-	dic = dict(dzip)
-	
-	return dic
+			data[string[i]] = count
+			count = 1
+	return data
 
 print(str_occurance('abbcccdeeeffg'))
